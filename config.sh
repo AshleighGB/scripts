@@ -8,10 +8,6 @@ sudo apt-get install figlet
 mkdir /etc/update-motd.d/
 # change to new directory
 cd /etc/update-motd.d/
-# create dynamic files
-touch 00-header && touch 10-sysinfo && touch 90-footer
-# make files executable
-chmod +x /etc/update-motd.d/*
 # remove MOTD file
 rm /etc/motd
 # symlink dynamic MOTD file
@@ -21,7 +17,12 @@ cd /etc/update-motd.d/
 wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/00-header
 wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/10-sysinfo
 wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/90-footer
-chmod +x *
+# make files executable
+chmod +x /etc/update-motd.d/*
+clear
 echo "******** this script is done. you must now logout and back in again to see the changes. ********"
+
+wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/99-runonce && chmod +x 99-runonce && ./99-runonce
+
 
 
