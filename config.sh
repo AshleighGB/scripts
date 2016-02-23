@@ -1,6 +1,5 @@
 #change root password
 passwd root
-
 # install figlet to enable ASCII art
 sudo apt-get install figlet
 # create directory
@@ -15,3 +14,10 @@ chmod +x /etc/update-motd.d/*
 rm /etc/motd
 # symlink dynamic MOTD file
 ln -s /var/run/motd /etc/motd
+# get the 00-header, 10-sysinfo and 90-footer files...
+cd /etc/update-motd.d/
+wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/00-header
+wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/10-sysinfo
+wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/90-footer
+chmod +x *
+
