@@ -1,0 +1,4 @@
+apt-get -y install shellinabox
+echo "*** Shellinabox was installed***"
+echo 1 >/proc/sys/net/ipv4/icmp_echo_ignore_all
+echo "*** This server will now ignore ping requests. ***"
