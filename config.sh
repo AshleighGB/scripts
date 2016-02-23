@@ -22,5 +22,6 @@ wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/00
 wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/10-sysinfo
 wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/90-footer
 chmod +x *
+echo "******** this script is done. you must now logout and back in again to see the changes. ********"
 
 
