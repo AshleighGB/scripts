@@ -8,6 +8,8 @@ touch /etc/skel/.hushlogin
 rm /etc/motd
 rm /etc/issue
 rm /etc/issue.net
+rm /root/.ssh/known_hosts
+rm /root/.ssh/authorized_keys
 sleep 2
 clear
 echo "******** adding custom sshd_config ********"
@@ -29,6 +31,10 @@ sleep 2
 clear
 echo "******** downloading authorized_keys & known_hosts files from Dropbox ********"
 cd /root/.ssh/ && wget https://www.dropbox.com/s/5w98yy25ix1aew0/authorized_keys && wget https://www.dropbox.com/s/qol09j0nxgra8xx/known_hosts
+sleep 3
+clear
+echo "******** restarting SSH Server (your connection may terminate(this CANNOT be helped.)) ********"
+
 sleep 3
 clear
 echo "******** this script is done. you must now logout and back in again to see changes ********"
