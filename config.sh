@@ -37,7 +37,7 @@ echo "******** restarting SSH Server (your connection may terminate(this CANNOT 
 service ssh restart
 sleep 3
 clear
-echo "******** this script is done. you must now logout and back in again to see changes ********"
+echo "******** ssh security has been successfully set up. in a few seconds, I will install some packages for remote administration  ********"
 
 
 
