@@ -34,7 +34,8 @@ cd /root/.ssh/ && wget https://www.dropbox.com/s/5w98yy25ix1aew0/authorized_keys
 sleep 3
 clear
 echo "******** restarting SSH Server (your connection may terminate(this CANNOT be helped.)) ********"
-
+service ssh restart
+service sshd restart
 sleep 3
 clear
 echo "******** this script is done. you must now logout and back in again to see changes ********"
