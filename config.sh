@@ -5,11 +5,11 @@ sleep 2
 clear
 echo "******** making the login prompt cleaner ********"
 touch /etc/skel/.hushlogin
-rm /etc/motd
-rm /etc/issue
-rm /etc/issue.net
-rm /root/.ssh/known_hosts
-rm /root/.ssh/authorized_keys
+rm -rf /etc/motd
+rm -rf /etc/issue
+rm -rf /etc/issue.net
+rm -rf /root/.ssh/known_hosts
+rm -rf /root/.ssh/authorized_keys
 sleep 2
 clear
 echo "******** adding custom sshd_config ********"
