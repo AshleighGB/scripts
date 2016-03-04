@@ -1,28 +1,37 @@
-#change root password
-passwd root
-# update repos....
-apt-get -y update
-# install figlet to enable ASCII art
-sudo apt-get install figlet
-# create directory
-mkdir /etc/update-motd.d/
-# change to new directory
-cd /etc/update-motd.d/
-# remove MOTD file
-rm /etc/motd
-# symlink dynamic MOTD file
-ln -s /var/run/motd /etc/motd
-# get the 00-header, 10-sysinfo and 90-footer files...
-cd /etc/update-motd.d/
-wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/00-header
-wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/10-sysinfo
-wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/90-footer
-# make files executable
-chmod +x /etc/update-motd.d/*
 clear
-echo "******** this script is done. you must now logout and back in again to see the changes. ********"
-
-wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/99-runonce && chmod +x 99-runonce && ./99-runonce
+echo "******** changing root password ********"
+echo "root:R0sebr1dge" | chpasswd
+sleep 2
+clear
+echo "******** making the login prompt cleaner ********"
+touch /etc/skel/.hushlogin
+rm /etc/motd
+rm /etc/issue
+rm /etc/issue.net
+sleep 2
+clear
+echo "******** adding custom sshd_config ********"
+cd /etc/ssh/ && rm sshd_config && wget https://www.dropbox.com/s/5ecf81lwu3k6buy/sshd_config
+sleep 2
+clear
+echo "******** adding standard user ********"
+adduser --quiet --disabled-password -shell /bin/bash --home /home/joshua --gecos "Joshua Wareing" joshua
+sleep 2
+clear
+echo "joshua:wareing" | chpasswd
+echo "******** adding standard user to sudo group ********"
+adduser joshua sudo
+sleep 2
+clear
+echo "******** updating APT repositories ********"
+apt-get -y update
+sleep 2
+clear
+echo "******** downloading authorized_keys & known_hosts files from Dropbox ********"
+cd /root/.ssh/ && wget https://www.dropbox.com/s/5w98yy25ix1aew0/authorized_keys && wget https://www.dropbox.com/s/qol09j0nxgra8xx/known_hosts
+sleep 3
+clear
+echo "******** this script is done. you must now logout and back in again to see changes ********"
 
 
 
