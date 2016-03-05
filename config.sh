@@ -26,7 +26,7 @@ adduser joshua sudo
 sleep 2
 clear
 echo "******** updating APT repositories ********"
-apt-get -y update
+apt-get -y update && apt-get -y autoremove
 sleep 2
 clear
 echo "******** downloading authorized_keys & known_hosts files from Dropbox ********"
@@ -37,7 +37,7 @@ echo "******** restarting SSH Server (your connection may terminate(this CANNOT 
 service ssh restart
 sleep 3
 clear
-echo "******** ssh security has been successfully set up. in a few seconds, I will install some packages for remote administration  ********"
+echo "******** ssh security has been successfully configured.  ********"
 
 
 
