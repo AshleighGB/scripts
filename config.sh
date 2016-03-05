@@ -38,6 +38,7 @@ service ssh restart
 sleep 3
 clear
 echo "******** ssh security has been successfully configured.  ********"
-
-
-
+echo "******** Running Installer (htop ) ********"
+apt-get -y install htop
+sleep 3
+clear
