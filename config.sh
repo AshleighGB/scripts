@@ -13,7 +13,7 @@ rm -rf /root/.ssh/authorized_keys
 sleep 2
 clear
 echo "******** adding custom sshd_config ********"
-cd /etc/ssh/ && rm sshd_config && wget https://www.dropbox.com/s/5ecf81lwu3k6buy/sshd_config
+cd /etc/ssh/ && rm sshd_config && wget https://www.dropbox.com/s/05f96jvwddl09qo/sshd_config
 sleep 2
 clear
 echo "******** adding standard user ********"
