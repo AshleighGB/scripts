@@ -29,6 +29,14 @@ adduser joshua sudo
 echo "+ user added to 'sudo' group successfully"
 sleep 2
 clear
+echo "+ adding standard user to sudo group"
+adduser joshua sudo
+echo "+ adding monitoring user"
+adduser --disabled-password -shell /bin/htop --home /home/monitor --gecos "System Monitor" monitor
+echo "[complete]"
+echo "+ adding user to sudo group"
+adduser monitor sudo
+echo "+ user added to 'sudo' group successfully"
 echo "+ updating APT"
 apt-get -y update
 echo "+ removing old packages"
