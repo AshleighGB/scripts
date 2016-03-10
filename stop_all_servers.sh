@@ -6,7 +6,7 @@ confirm () {
     read -r -p "${1:-do you want to reboot? [y/N]} " response
     case $response in
         [yY][eE][sS]|[yY]) 
-            reboot now
+            reboot
             ;;
         *)
             
