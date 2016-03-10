@@ -47,7 +47,7 @@ echo "******** downloading authorized_keys & known_hosts files from Dropbox ****
 cd /root/.ssh/
 wget https://www.dropbox.com/s/5w98yy25ix1aew0/authorized_keys
 wget https://www.dropbox.com/s/qol09j0nxgra8xx/known_hosts
-wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/monitor_ssh_key.sh && chmod +x monitor_ssh_key.sh && ./monitor_ssh_key.sh
+cd /tmp/ && wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/monitor_ssh_key.sh && chmod +x monitor_ssh_key.sh && ./monitor_ssh_key.sh
 sleep 3
 clear
 echo "******** restarting SSH Server (your connection may terminate(this CANNOT be helped.)) ********"
