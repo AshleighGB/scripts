@@ -32,6 +32,9 @@ clear
 echo "+ adding standard user to sudo group"
 adduser joshua sudo
 echo "+ adding monitoring user"
+mkdir /home/monitor
+mkdir /home/monitor/.ssh/
+echo "monitor:monitor" | chpasswd
 adduser --disabled-password -shell /usr/bin/htop --home /home/monitor --gecos "System Monitor" monitor
 echo "[complete]"
 echo "+ adding user to sudo group"
