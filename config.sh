@@ -1,8 +1,5 @@
 clear
-echo "/ changing root password"
-echo "root:R0sebr1dge" | chpasswd
 sleep 2
-clear
 echo "+ applying custom configs for remote logins"
 touch /etc/skel/.hushlogin
 rm -rf /etc/motd
@@ -32,10 +29,10 @@ clear
 echo "+ adding standard user to sudo group"
 adduser joshua sudo
 echo "+ adding monitoring user"
+adduser --disabled-password -shell /usr/bin/htop --home /home/monitor --gecos "System Monitor" monitor
 mkdir /home/monitor
 mkdir /home/monitor/.ssh/
 echo "monitor:monitor" | chpasswd
-adduser --disabled-password -shell /usr/bin/htop --home /home/monitor --gecos "System Monitor" monitor
 echo "[complete]"
 echo "+ adding user to sudo group"
 adduser monitor sudo
@@ -68,16 +65,5 @@ apt-get -y install htop
 echo "******** Installer Completed ( htop ) ********"
 sleep 3
 clear
-echo "******** Running Installer ( shellinabox ) ********"
-apt-get -y install shellinabox
-service shellinabox stop
-cd /etc/default/
-rm -rf shellinabox
-wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/shellinabox
-service shellinabox start
-echo "******** Installer Completed ( shellinabox ) ********"
-sleep 3
-clear
-
 echo "finished."
 
