@@ -1,5 +1,4 @@
 clear
-sleep 2
 echo "+ applying custom configs for remote logins"
 touch /etc/skel/.hushlogin
 rm -rf /etc/motd
@@ -12,7 +11,7 @@ clear
 echo "- removing old sshd_config"
 cd /etc/ssh/ && rm sshd_config
 echo "+ adding custom sshd_config"
-wget https://www.dropbox.com/s/05f96jvwddl09qo/sshd_config
+wget https://www.dropbox.com/s/05f96jvwddl09qo/sshd_config --progress=bar:force 2>&1 | tail -f -n +6
 sleep 2
 clear
 echo "+ adding standard user"
@@ -31,7 +30,6 @@ adduser joshua sudo
 echo "+ adding monitoring user"
 adduser --disabled-password -shell /usr/bin/htop --home /home/monitor --gecos "System Monitor" monitor
 mkdir /home/monitor
-mkdir /home/monitor/.ssh/
 echo "monitor:monitor" | chpasswd
 echo "[complete]"
 echo "+ adding user to sudo group"
@@ -45,9 +43,11 @@ sleep 2
 clear
 echo "******** downloading authorized_keys & known_hosts files from Dropbox ********"
 cd /root/.ssh/
-wget https://www.dropbox.com/s/5w98yy25ix1aew0/authorized_keys
-wget https://www.dropbox.com/s/qol09j0nxgra8xx/known_hosts
-cd /tmp/ && wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/monitor_ssh_key.sh && chmod +x monitor_ssh_key.sh && ./monitor_ssh_key.sh
+wget https://www.dropbox.com/s/5w98yy25ix1aew0/authorized_keys --progress=bar:force 2>&1 | tail -f -n +6
+wget https://www.dropbox.com/s/qol09j0nxgra8xx/known_hosts --progress=bar:force 2>&1 | tail -f -n +6
+cd /tmp/ && wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/monitor_ssh_key.sh  --progress=bar:force 2>&1 | tail -f -n +6
+chmod +x monitor_ssh_key.sh 
+monitor_ssh_key.sh
 sleep 3
 clear
 echo "******** restarting SSH Server (your connection may terminate(this CANNOT be helped.)) ********"
