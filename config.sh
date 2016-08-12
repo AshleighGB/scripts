@@ -11,7 +11,7 @@ clear
 echo "- removing old sshd_config"
 cd /etc/ssh/ && rm sshd_config
 echo "+ adding custom sshd_config"
-curl -o sshd_config https://www.dropbox.com/s/05f96jvwddl09qo/sshd_config
+curl -o /etc/ssh/sshd_config https://www.dropbox.com/s/05f96jvwddl09qo/sshd_config
 sleep 2
 clear
 echo "+ adding standard user"
@@ -43,8 +43,8 @@ sleep 2
 clear
 echo "******** downloading authorized_keys & known_hosts files from Dropbox ********"
 cd /root/.ssh/
-curl -o authorized_keys https://www.dropbox.com/s/5w98yy25ix1aew0/authorized_keys
-curl -o known_hosts https://www.dropbox.com/s/qol09j0nxgra8xx/known_hosts
+curl -o /root/.ssh/authorized_keys https://www.dropbox.com/s/5w98yy25ix1aew0/authorized_keys
+curl -o /root/.ssh/known_hosts https://www.dropbox.com/s/qol09j0nxgra8xx/known_hosts
 cd /tmp/ && wget https://raw.githubusercontent.com/JoshWareing/linux-setup-scripts/master/monitor_ssh_key.sh  --progress=bar:force 2>&1 | tail -f -n +6
 chmod +x monitor_ssh_key.sh 
 monitor_ssh_key.sh
