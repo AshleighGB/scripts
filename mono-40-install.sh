@@ -14,3 +14,6 @@ apt-get -y install mono-complete
 sleep 3
 clear
 echo "Completed action: Install Mono"
+sleep 3
+echo "Running Action: Check Mono Version"
+mono --version
