@@ -1,6 +1,4 @@
 #!/bin/bash
-# Sinusbot Installer by Philipp Eßwein - DAThosting.eu philipp.esswein@dathosting.eu
-
 # Vars
 
 USERADD=`which useradd` 
