@@ -11,7 +11,7 @@ clear
 echo "- removing old sshd_config"
 cd /etc/ssh/ && rm sshd_config
 echo "+ adding custom sshd_config"
-curl -o /etc/ssh/sshd_config https://www.dropbox.com/s/05f96jvwddl09qo/sshd_config
+curl -o /etc/ssh/sshd_config https://www.dropbox.com/s/azm15z8xu2ixudw/sshd_config
 sleep 2
 clear
 echo "+ adding standard user"
@@ -29,8 +29,7 @@ echo "+ adding standard user to sudo group"
 adduser joshua sudo
 echo "+ adding monitoring user"
 adduser --disabled-password -shell /usr/bin/htop --home /home/monitor --gecos "System Monitor" monitor
-mkdir /home/monitor
-echo "monitor:monitor" | chpasswd
+echo "monitor:bW9uaXRvcg" | chpasswd
 echo "[complete]"
 echo "+ adding user to sudo group"
 adduser monitor sudo
@@ -51,6 +50,8 @@ monitor_ssh_key.sh
 sleep 3
 clear
 echo "******** restarting SSH Server (your connection may terminate(this CANNOT be helped.)) ********"
+sed -i 's/Port 22/Port 8143/g' /etc/ssh/sshd_config
+sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
 service ssh restart
 sleep 3
 clear
