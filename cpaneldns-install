@@ -1,0 +1,6 @@
+#!/bin/bash
+yum -y update
+yum -y -qq install wget
+wget https://securedownloads.cpanel.net/latest-dnsonly
+sh latest-dnsonly
+reboot
