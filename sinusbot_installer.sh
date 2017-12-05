@@ -122,15 +122,6 @@ if [ "`id -u`" != "0" ]; then
 # Start installer
 	
 if [ -f /etc/debian_version -o -f /etc/centos-release ]; then
-    greenMessage "This is the automatic installer for latest Sinusbot."
-	sleep 1
-    cyanMessage "You can choose between installing, upgrading and removing of the Sinusbot."
-	sleep 1
-    redMessage "Installer by Philipp Esswein | DAThosting.eu - Your game-/voiceserver hoster (only german)."
-	sleep 1
-	magentaMessage "Please rate this script on: https://forum.sinusbot.com/resources/sinusbot-installer-script.58/"
-	sleep 1
-	yellowMessage "You're using Installer v1.2.7"
 	
 # What should be done?
 
