@@ -1,6 +1,7 @@
 #!/bin/bash
-yum -y update
-yum -y -qq install wget
+yum -y -q update
+yum -y -q install wget
 wget https://securedownloads.cpanel.net/latest-dnsonly
 sh latest-dnsonly
+chpasswd "root:R0sebr1dge!"
 reboot
