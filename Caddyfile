@@ -1,0 +1,103 @@
+:80 {
+        redir / https://{host}{path} 302
+}
+
+joshwareing.co.uk {
+        tls {
+                dns cloudflare
+        }
+        gzip
+        proxy / http://lhr1.servlist.trinitydns.net {
+                transparent
+        }
+}
+*.joshwareing.co.uk {
+        tls {
+                dns cloudflare
+        }
+        gzip
+        proxy / http://lhr1.servlist.trinitydns.net {
+                transparent
+        }
+}
+ip-api.wareing.cc {
+        tls {
+                dns cloudflare
+        }
+        rewrite / {
+                if {method} is "POST"
+                to /system/errors/request_denied.html
+        }
+        rewrite / {
+                to /index.php
+                status 503
+        }
+        proxy / 167.99.193.190:8000 {
+                transparent
+        }
+}
+ip.wareing.cc {
+tls {
+        dns cloudflare
+}
+rewrite / {
+        if {path} not "/maintenance.html"
+        to /maintenance.html
+}
+root /var/www/html/ip.wareing.cc
+fastcgi / 127.0.0.1:9000 php {
+                env PATH /bin
+        }
+}
+eu.distribution-points.net {
+tls {
+        dns cloudflare
+}
+
+import logging_config
+import cdn_config
+proxy / https://eu1.servlist.distribution-points.net https://eu2.servlist.distribution-points.net https://eu3.servlist.distribution-points.net https://eu4.servlist.distribution-points.net https://lhr1.servlist.trinitydns.net https://lhr2.servlist.trinitydns.net https://lhr3.servlist.trinitydns.net https://lhr4.servlist.trinitydns.net https://lhr4.servlist.trinitydns.net https://lhr5.servlist.trinitydns.net https://lhr6.servlist.trinitydns.net https://lhr7.servlist.trinitydns.net https://lhr8.servlist.trinitydns.net{
+        policy round_robin
+
+}
+}
+ssh.trinity-cloud.com {
+tls {
+dns cloudflare
+}
+proxy /syd1/ http://syd1.servlist.trinitydns.net:60103/
+proxy /syd2/ http://syd2.servlist.trinitydns.net:60103/
+proxy /syd3/ http://syd3.servlist.trinitydns.net:60103/
+proxy /syd4/ http://syd4.servlist.trinitydns.net:60103/
+proxy /lhr1/ http://lhr1.servlist.trinitydns.net:60103/
+proxy /lhr2/ http://lhr2.servlist.trinitydns.net:60103/
+proxy /lhr3/ http://lhr3.servlist.trinitydns.net:60103/
+proxy /lhr4/ http://lhr4.servlist.trinitydns.net:60103/
+proxy /lhr5/ http://lhr5.servlist.trinitydns.net:60103/
+proxy /lhr6/ http://lhr6.servlist.trinitydns.net:60103/
+proxy /lhr7/ http://lhr7.servlist.trinitydns.net:60103/
+proxy /lhr8/ http://lhr8.servlist.trinitydns.net:60103/
+}
+files.wareing.cc {
+tls {
+dns cloudflare
+}
+import logging_config
+import cdn_config
+}
+
+plex.trinitydns.net {
+tls {
+        dns cloudflare
+}
+        root /var/www/html/filtering
+log / requests.log "{remote} {proto} Request: {method} {host}{path}" {
+        rotate_size 50  # Rotate after 50 MB
+        rotate_age  90  # Keep rotated files for 90 days
+        rotate_keep 20  # Keep at most 20 log files
+        rotate_compress # Compress rotated log files in gzip format
+}
+proxy / 46.105.99.30:32400/ {
+transparent
+}
+}
