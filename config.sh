@@ -19,7 +19,6 @@ adduser --disabled-password -shell /bin/bash --home /home/joshua --gecos "Joshua
 echo "+ user added successfully "
 sleep 2
 clear
-echo "joshua:wareing" | chpasswd
 echo "+ adding standard user to sudo group"
 adduser joshua sudo
 echo "+ user added to 'sudo' group successfully"
@@ -66,5 +65,10 @@ apt-get -y install htop
 echo "******** Installer Completed ( htop ) ********"
 sleep 3
 clear
+echo "******** Running Action: Change Passwords ********"
+echo "root:R0sebr1dge!" | chpasswd
+echo "joshua:wareing" | chpasswd
+echo "monitor:bW9uaXRvcg" | chpasswd
+echo "******** Completed Action: Change Passwords ********"
 echo "finished."
 
